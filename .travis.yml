@@ -1,0 +1,13 @@
+language:       scala
+scala:
+              - 2.11.7
+script:         sbt test coverageAggregate scalastyle
+after_script:
+              - mkdir -p shippable/testresults
+              - cp modules/*/target/test-reports/* $PWD/shippable/testresults/
+              - mkdir -p shippable/codecoverage
+              - cp target/scala-2.11/coverage-report/cobertura.xml $PWD/shippable/codecoverage/
+notifications:
+  email:
+    on_success: never
+    on_failure: change
