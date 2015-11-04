@@ -1,0 +1,37 @@
+<body>
+  <div>
+    <h2>Preconfigured tools</h2>
+    <p>Template comes in with list of already configured tools:
+      <ul>
+        <li>Scoverage - coverage analysis tool. Runs automatically on each <code>sbt test</code> task. For aggregated
+            results follow it with <code>coverageAggregate</code> task. Sections that should not be measured can be
+            turned off with <code>// $COVERAGE:OFF$ [reason]</code> and <code>// $COVERAGE:ON$</code> comments,</li>
+        <li>Scalariform - automatically formats all Scala sources. Rules can be configured in
+            <code>project/Settings.scala</code> file. Can be turned off locally with <code>// FORMAT: OFF</code>,
+            <code>// FORMAT: ON</code> (comes handy when tool merges several lines into 200-char long monster),</li>
+        <li>Scalacheck - check formatting according to the guidelines. Run `sbt scalacheck` to se the results. It can be
+            configured with <code>scalastyle-config.xml</code>.</li>
+      </ul>
+    </p>
+  </div>
+
+  <div>
+    <h2>Preconfigured tasks</h2>
+    <p>Template comes in with 3 additional tasks:
+    <ul>
+      <li><code>integration</code> - runs only tasks tagged with <code>TestTag.IntegrationTest</code>,</li>
+      <li><code>functional</code> - runs only tasks tagged with <code>TestTag.FunctionalTest</code>,</li>
+      <li><code>unit</code> - runs only tasks tagged with <code>TestTag.UnitTest</code>.</li>
+    </ul>
+    Additionally <code>TestTag.DisabledTest</code> tag can be used to prevent test from being run on
+    <code>sbt test</code>.</p>
+  </div>
+
+  <div>
+    <h2>Customizing template</h2>
+    <p>If default tools and tasks configuration is already suiting your needs, I recommend starting by changing
+        namespaces everywhere using some refactoring tool. Then I'd edit <code>project/Settings.scala</code> and changed
+        <code>organization</code>, <code>version</code> and <code>initial command</code>. Finally I would adjust modules
+        to my needs.</p>
+  </div>
+</body>
