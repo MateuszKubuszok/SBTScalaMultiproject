@@ -5,7 +5,7 @@ import Dependencies._
 object Dependencies {
 
   // scala version
-  val scalaVersion = "2.11.7"
+  val scalaVersion = "2.11.8"
 
   // resolvers
   val resolvers = Seq(

@@ -5,7 +5,6 @@ import sbt.Tests.Argument
 import sbt.{IntegrationTest => _, _}
 import sbt.Keys._
 
-import Settings._
 import scalariform.formatter.preferences._
 import scoverage.ScoverageKeys._
 import scoverage.ScoverageSbtPlugin
@@ -55,7 +54,7 @@ object Settings extends Dependencies {
     libraryDependencies ++= testDeps map (_ % "test"),
 
     testOptions in Test += excludeTags(disabledTestTag),
-    coverageEnabled := true,
+    coverageEnabled := false,
 
     ScalariformKeys.preferences := ScalariformKeys.preferences.value
       .setPreference(AlignArguments, true)
@@ -85,9 +84,6 @@ object Settings extends Dependencies {
       settings(testOptions in config ++= Seq(sequential)).
       settings(parallelExecution in config := false)
   }
-}
-
-trait Settings {
 
   implicit class DataConfigurator(project: Project) {
 
