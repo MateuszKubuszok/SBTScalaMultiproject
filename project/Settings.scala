@@ -87,39 +87,39 @@ object Settings extends Dependencies {
 
   implicit class DataConfigurator(project: Project) {
 
-    def setName(newName: String) = project.settings(name := newName)
+    def setName(newName: String): Project = project.settings(name := newName)
 
-    def setDescription(newDescription: String) = project.settings(description := newDescription)
+    def setDescription(newDescription: String): Project = project.settings(description := newDescription)
 
-    def setInitialCommand(newInitialCommand: String) =
-      project.settings(initialCommands := s"pl.combosolutions.backup.$newInitialCommand")
+    def setInitialCommand(newInitialCommand: String): Project =
+      project.settings(initialCommands := s"pl.combosolutions.$newInitialCommand")
   }
 
   implicit class RootConfigurator(project: Project) {
 
-    def configureRoot = project.settings(rootSettings: _*)
+    def configureRoot: Project = project.settings(rootSettings: _*)
   }
 
   implicit class ModuleConfigurator(project: Project) {
 
-    def configureModule = project.settings(modulesSettings: _*)
+    def configureModule: Project = project.settings(modulesSettings: _*)
   }
 
   implicit class IntegrationTestConfigurator(project: Project)
     extends Configurator(project, IntegrationTest, integrationTestTag) {
 
-    def configureIntegrationTests = configureSequential
+    def configureIntegrationTests: Project = configureSequential
   }
 
   implicit class FunctionalTestConfigurator(project: Project)
     extends Configurator(project, FunctionalTest, functionalTestTag) {
 
-    def configureFunctionalTests = configure
+    def configureFunctionalTests: Project = configure
   }
 
   implicit class UnitTestConfigurator(project: Project)
     extends Configurator(project, UnitTest, unitTestTag) {
 
-    def configureUnitTests = configure
+    def configureUnitTests: Project = configure
   }
 }
