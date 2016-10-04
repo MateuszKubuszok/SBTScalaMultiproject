@@ -25,11 +25,46 @@ If you measure coverage you have to clean project otherwise it will not instrume
 
 Running selected suite:
 
-    sbt first/test
-    sbt first/unit:test
-    sbt first/unit:functional
-    sbt first/unit:integration
-    sbt second/test
-    sbt second/unit:test
-    sbt second/unit:functional
-    sbt second/unit:integration
+```bash
+sbt first/test
+sbt first/unit:test
+sbt first/unit:functional
+sbt first/unit:integration
+sbt second/test
+sbt second/unit:test
+sbt second/unit:functional
+sbt second/unit:integration
+```
+
+Creating tagged test:
+
+```scala
+class ClassUnderTestSpec extends Specification with Mockito {
+
+  "ClassUnderTest" should {
+
+    "be nice" in {
+      // given
+      ...
+
+      // when
+      ...
+
+      // then
+      ...
+    } tag UnitTest
+    
+    "be nice" in {
+      // given
+      ...
+
+      // when
+      ...
+
+      // then
+      ...
+    } tag FunctionalTest
+  }
+  
+}
+```
