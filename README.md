@@ -133,3 +133,50 @@ class ClassUnderTestSpec extends Specification with Mockito {
   
 }
 ```
+
+### Test tags
+
+Tags are defined in `TestTag` object. One can define its own tags by adding them into `TestTag` objects (both in build
+as well as in commons) and then creating task and implicit class using existing tasks configs as example.
+
+E.g. if one were to add hic own tag:
+
+```
+object TestTag {
+  ...
+  val CustomTest = "custom"
+}
+```
+
+in both objects, then added:
+
+```scala
+object Settings {
+  private val customTestTag = TestTag.CustomTest
+  val CustomTest = config(customTestTag) extend Test describedAs "Runs only custom tests"
+  
+  ...
+  
+  implicit class CustomTestConfigurator(project: Project)
+    extends Configurator(project, UnitTest, unitTestTag) {
+
+    def configureCustomTests: Project = configure
+  }
+}
+```
+
+to `project/Settings.scala` and finally:
+
+```
+val myProject.from("my-project")
+  ...
+  .configureCustomTests
+```
+
+then he/she would be able to run:
+
+```bash
+sbt my-project/custom:test
+```
+
+task running only tests tagged as `CustomTest`.
