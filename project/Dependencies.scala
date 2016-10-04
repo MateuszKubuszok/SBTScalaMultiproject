@@ -9,8 +9,7 @@ object Dependencies {
 
   // resolvers
   val resolvers = Seq(
-    Resolver sonatypeRepo "public",
-    Resolver typesafeRepo "releases"
+    Resolver sonatypeRepo "public"
   )
 
   // functional utils
