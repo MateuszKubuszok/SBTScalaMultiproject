@@ -7,10 +7,11 @@
             results follow it with <code>coverageAggregate</code> task. Sections that should not be measured can be
             turned off with <code>// $COVERAGE:OFF$ [reason]</code> and <code>// $COVERAGE:ON$</code> comments,</li>
         <li>Scalariform - automatically formats all Scala sources. Rules can be configured in
-            <code>project/Settings.scala</code> file. Can be turned off locally with <code>// FORMAT: OFF</code>,
-            <code>// FORMAT: ON</code> (comes handy when tool merges several lines into 200-char long monster),</li>
-        <li>Scalacheck - check formatting according to the guidelines. Run `sbt scalacheck` to se the results. It can be
-            configured with <code>scalastyle-config.xml</code>.</li>
+            <code>project/Settings.scala</code> file. Can be turned off locally with <code>// format: OFF</code>,
+            <code>// format: ON</code> (comes handy when tool merges several lines into 200-char long monster),</li>
+        <li>Scalastyle - check formatting according to the guidelines. Run `sbt scalacheck` to se the results. It can be
+            configured with <code>scalastyle-config.xml</code>. If some rule needs exception you can use
+            <code>// scalastyle:off [rule id]</code></li>
       </ul>
     </p>
   </div>
