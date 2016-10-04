@@ -8,7 +8,7 @@ Template of SBT Scala with:
  * [Scoverage](https://github.com/scoverage/sbt-scoverage) configuration,
  * [Scalastyle](http://www.scalastyle.org/) configuration,
  * predefined [sub]tasks: `integration:test`, `functional:test`, `unit:test` which run tests tagged as
-   `UnitTest`/`FunctionalTest`/`IntegrationTest` respectively,
+   `IntegrationTest`/`FunctionalTest`/`UnitTest` respectively,
  * filtering out tests tagged as `DisabledTest`.
 
 ## Customization
@@ -47,7 +47,7 @@ If possible make defaults as strict as possible and just loosen them where absol
    ```scala
    // $COVERAGE:OFF$ [reason]
    // not measured 
-   // $COVERAGE:ON$</code>
+   // $COVERAGE:ON$
    ```
  * formatting disabling:
  
@@ -63,6 +63,7 @@ If possible make defaults as strict as possible and just loosen them where absol
    // not checked
    // scalastyle:on
    ```
+
 It can be used for e.g disabling measurement of automatically generated code, formatting that merges lines into
 something exceeding character limit or allowing null where interacting with Java code.
 
@@ -84,7 +85,9 @@ sbt second/run
 sbt clean coverage test coverageAggregate scalastyle
 ```
 
-If you measure coverage you have to clean project otherwise it will not instrument properly.
+If you measure coverage you have to clean project otherwise it will not instrument properly. (To be precise coverage
+cache should be clean if you want to have correct results - if you have just built project and haven't run any tests
+with coverage enabled you don't have to clean anything).
 
 ### Selecting test suites
 
@@ -108,7 +111,7 @@ class ClassUnderTestSpec extends Specification with Mockito {
 
   "ClassUnderTest" should {
 
-    "be nice" in {
+    "be nice here" in {
       // given
       ...
 
@@ -119,7 +122,7 @@ class ClassUnderTestSpec extends Specification with Mockito {
       ...
     } tag UnitTest
     
-    "be nice" in {
+    "be nice overall" in {
       // given
       ...
 
@@ -158,7 +161,7 @@ object Settings {
   ...
   
   implicit class CustomTestConfigurator(project: Project)
-    extends Configurator(project, UnitTest, unitTestTag) {
+    extends Configurator(project, CustomTest, customTestTag) {
 
     def configureCustomTests: Project = configure
   }
