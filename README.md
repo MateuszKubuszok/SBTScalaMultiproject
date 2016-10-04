@@ -20,3 +20,16 @@ Template of SBT Scala with:
     sbt clean coverage test coverageAggregate scalastyle
 
 If you measure coverage you have to clean project otherwise it will not instrument properly.
+
+## Selecting test suites
+
+Running selected suite:
+
+    sbt first/test
+    sbt first/unit:test
+    sbt first/unit:functional
+    sbt first/unit:integration
+    sbt second/test
+    sbt second/unit:test
+    sbt second/unit:functional
+    sbt second/unit:integration
