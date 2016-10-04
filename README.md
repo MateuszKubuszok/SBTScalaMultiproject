@@ -1,5 +1,7 @@
 # SBT Scala multiproject template
 
+![https://travis-ci.org/MateuszKubuszok/SBTScalaMultiproject](https://travis-ci.org/MateuszKubuszok/SBTScalaMultiproject.svg)
+
 Template of SBT Scala with:
 
  * two modules independent of each other: `first` and `second`,
