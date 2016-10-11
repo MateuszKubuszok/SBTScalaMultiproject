@@ -1,7 +1,7 @@
 language:       scala
 scala:
               - 2.11.8
-script:         sbt coverage test coverageAggregate scalastyle
+script:         sbt coverage test coverageReport coverageAggregate scalastyle
 after_script:
               - mkdir -p shippable/testresults
               - cp modules/*/target/test-reports/* $PWD/shippable/testresults/

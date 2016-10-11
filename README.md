@@ -28,7 +28,7 @@ Within `build.sbt` use existing modules as basis how to use small DSL for applyi
  * `configureUnitTests`/`configureFunctionalTests`/`configureIntegrationTests` will add `unit:test`/`functional:test`/
    `integration:test` task to your module,
  * `dependsOnProjects(projects)` will set up both compile and test dependency (so tests will succeed only if module's
-    own and it's dependency's tests will pass),
+    own and it's dependency's tests will pass, and in test code you could use some common code from your dependencies),
  * each of those commands will return project allowing normal `.settings(settings)` application. For individual settings
    one can also use `modules/name/build.sbt` individual per-module settings.
 
@@ -45,21 +45,21 @@ providing your own `README` and `LICENSE` files.
 If possible make defaults as strict as possible and just loosen them where absolutely needed:
 
  * coverage disabling:
- 
+
    ```scala
    // $COVERAGE:OFF$ [reason]
    // not measured 
    // $COVERAGE:ON$
    ```
  * formatting disabling:
- 
+
    ```scala
    // format: OFF
    // not formatted
    // format: ON
    ```
  * style check disabling:
- 
+
    ```scala
    // scalastyle:off [rule id]
    // not checked
@@ -84,7 +84,7 @@ sbt second/run
 ### Running all tests with coverage and style check:
 
 ```bash
-sbt clean coverage test coverageAggregate scalastyle
+sbt clean coverage test coverageReport coverageAggregate scalastyle
 ```
 
 If you measure coverage you have to clean project otherwise it will not instrument properly. (To be precise coverage
