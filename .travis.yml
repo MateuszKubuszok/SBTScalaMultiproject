@@ -1,6 +1,8 @@
 language:       scala
 scala:
               - 2.11.8
+jdk:
+              - oraclejdk8
 script:         sbt coverage test coverageReport coverageAggregate scalastyle
 after_script:
               - mkdir -p shippable/testresults

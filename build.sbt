@@ -1,6 +1,8 @@
 import sbt._
 import Settings._
 
+scalaVersion in ThisBuild := scalaVersionUsed
+
 lazy val root = project.root
   .setName("SBT template")
   .setDescription("Backup DSL")

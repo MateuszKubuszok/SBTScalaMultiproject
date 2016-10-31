@@ -34,6 +34,8 @@ object Settings extends Dependencies {
 
   private val modulesSettings = scalariformSettings ++ commonSettings ++ Seq(
     scalacOptions ++= Seq(
+      "-target:jvm-1.8",
+      "-encoding", "UTF-8",
       "-unchecked",
       "-deprecation",
       "-feature",
@@ -41,6 +43,7 @@ object Settings extends Dependencies {
       "-language:higherKinds",
       "-language:implicitConversions",
       "-language:postfixOps",
+      "-Yno-adapted-args",
       "-Ywarn-dead-code",
       "-Ywarn-infer-any",
       "-Ywarn-unused-import",
