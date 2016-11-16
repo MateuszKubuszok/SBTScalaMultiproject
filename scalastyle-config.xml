@@ -1,5 +1,5 @@
 <scalastyle>
- <name>BackupDSL configuration</name>
+ <name>Sane defaults</name>
  <check level="error" class="org.scalastyle.file.FileLengthChecker" enabled="true">
   <parameters>
    <parameter name="maxFileLength"><![CDATA[800]]></parameter>
