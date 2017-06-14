@@ -2,6 +2,8 @@
 
 ![https://travis-ci.org/MateuszKubuszok/SBTScalaMultiproject](https://travis-ci.org/MateuszKubuszok/SBTScalaMultiproject.svg)
 
+*Notice: I've migrated to Gitter8 template with several fixes/improvements over the old one - see [here](https://github.com/MateuszKubuszok/SBTScalaMultiproject2.g8).*
+
 Template of SBT Scala with:
 
  * two modules independent of each other: `first` and `second`,
